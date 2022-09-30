@@ -15,8 +15,8 @@ route.post('/',upload.array('qrcodes'),async (req, res)=>{
             process.stdout.on('data',(response)=>jsons.push(JSON.parse(response.toString())));
         })
         setTimeout(()=>{
-            const codes = jsons.map(({msg})=>msg);
-            res.status(200).json({msg:'Qrcodes readed!', codes})
+            // const codes = jsons.map(({code})=>code);
+            res.status(200).json({msg:'Qrcodes readed!', jsons})
         },250*qrcodes.length)
     }catch(error){
         if(error) console.log(error);
